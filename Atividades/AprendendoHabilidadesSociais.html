@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEA GAMES</title>
+    <link rel="icon" href="https://jogosdeinclusao.github.io/iconejogosdeinclusao.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <style>  
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .btn-voltar {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-bottom: 15px;
+            margin-top: 1px;
+            font-size: 16px;
+        }
+        
+        .btn-voltar:hover {
+            background-color: #45a049;
+        }
+
+
+        .container {
+            text-align: center;
+            padding: 25px 20px;
+            flex: 1;
+        }
+
+        .game-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .game-description {
+            margin-bottom: 20px;
+        }
+
+        .game-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo-container">
+            <img src="logojogosdeinclusao.png" alt="Logo Jogos de Inclusão">
+            <span class="site-name">TEA GAMES</span>
+        </div>
+        <div class="menu">
+            <a href="https://jogosdeinclusao.github.io/">Início</a>
+            <a href="https://jogosdeinclusao.github.io/Jogos/">Jogos</a>
+            <a href="https://jogosdeinclusao.github.io/Sobre/">Sobre</a>
+        </div>
+        <span class="hamburger" onclick="toggleMenu()">☰</span>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="https://jogosdeinclusao.github.io/">Início</a>
+            <a href="https://jogosdeinclusao.github.io/Jogos/">Jogos</a>
+            <a href="https://jogosdeinclusao.github.io/Sobre/">Sobre</a>
+        </div>
+    </div>
+
+        <!-- VLibras -->
+        <div vw class="enabled">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
+        </div>
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+        <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
+    </header>
+
+    <div class="container">
+        <button class="btn-voltar" onclick="location.href='https://jogosdeinclusao.github.io/Jogos/'">Voltar</button>
+        <div class="game-title">Aprendendo Habilidades Sociais</div>
+        <div class="game-description">Escolha um nível de dificuldade para começar...</div>
+        <button id="fullscreen-btn" class="btn-voltar" onclick="toggleFullscreen()">Ativar Tela Cheia</button>
+        <div class="game-container">
+            <div id="game" class="display-wide">
+                <iframe id="fg-frame-jogodamemorianumerico" scrolling="no" width="480" height="640" data-aspect-ratio="1" src="https://teagamesassistive.github.io/AprendendoHabilidadesSociais/" frameborder="0"></iframe><script></script>
+            </div>
+        </div>
+    </div>
+
+        <!-- Janela de Configurações -->
+        <div id="config-modal" class="config-modal">
+            <div class="config-content">
+                <button id="close-config" class="close-btn">✕</button>
+                <h3>Configurações</h3>
+    
+                <!-- Mudar Tema -->
+                <div class="config-item">
+                    <label for="theme-toggle">Mudar Tema:</label>
+                    <button id="theme-toggle" class="config-button">Claro</button>
+                </div>
+    
+                <!-- Tipo de Escala -->
+                <div class="config-item">
+                    <label for="scale-toggle">Tipo de Escala:</label>
+                    <button id="scale-toggle" class="config-button">Normal</button>
+                </div>
+            </div>
+        </div>
+
+    <footer>
+        <p>&copy; 2024 Jogos de Inclusão. Todos os direitos reservados.</p>
+        <button id="open-config" class="config-icon">⚙️</button>
+    </footer>
+
+    <script>
+    // Alterna o modo de tela cheia
+    function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        }
+
+    function toggleFullscreen() {
+    const iframe = document.getElementById("fg-frame-jogodamemorianumerico");
+    const fullscreenBtn = document.getElementById("fullscreen-btn");
+
+    if (!document.fullscreenElement) {
+        iframe.requestFullscreen().catch(err => {
+            console.error(`Erro ao entrar em tela cheia: ${err.message}`);
+        });
+        fullscreenBtn.textContent = "Ativar Tela Cheia";
+    } else {
+        document.exitFullscreen();
+        fullscreenBtn.textContent = "Ativar Tela Cheia";
+    }
+}
+    </script>
+
+</body>
+</html>
